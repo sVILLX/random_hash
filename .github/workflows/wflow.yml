@@ -1,0 +1,20 @@
+name: 3.13.7
+on: [push]
+jobs: 
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.13.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13.7
+      - name: Install dependencies
+        run: |
+          make install
+      - name: Lint
+        run: |
+          make lint
+      - name: Test
+        run: |
+          make test
